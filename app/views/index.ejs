@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple Calculator</title>
+    </head>
+    <body>
+        <h1>Simple Calculator - Javascript Cliente Side and Node.js Server Side</h1>
+        <hr>
+        <form>
+            <input type="number" placeholder="Primeiro Número" name="n1" id="n1"/>
+            <input type="number" placeholder="Segundo Número" name="n2" id="n2" />
+            <select name="operation" id="operation">
+                <option selected hidden>Select here</option>
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+            </select>
+            <input type="button" value="Calcular" onclick="calculate()"/>
+            <div id="result" style="margin-top: 1rem;">
+
+            </div>
+        </form>
+        <script>
+            const calculate = () => {
+                let n1 = parseInt(document.querySelector('#n1').value)
+                let n2 = parseInt(document.querySelector('#n2').value)
+                let oper = document.querySelector('#operation').value
+                let divResult = document.querySelector('#result')
+                let operations = {
+                    '+': (n1, n2) => n1 + n2,
+                    '-': (n1, n2) => n1 - n2,
+                    '*': (n1, n2) => n1 * n2,
+                    '/': (n1, n2) => n1 / n2
+                }
+                divResult.innerHTML = `${n1} ${oper} ${n2} = ${operations[oper](n1, n2)}`
+            }
+        </script>
+    </body>
+</html>
